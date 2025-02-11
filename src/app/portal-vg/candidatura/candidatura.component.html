@@ -1,0 +1,54 @@
+<div class="flex flex-row ">
+  <div class="bg-white flex flex-col shadow border w-64 ml-48 mt-8 p-4  rounded-lg">
+  <h1 class="font-sans  font-bold">Filtros Avançados</h1>
+  <label class="font-sans font-semibold text-sm mt-4 mb-4">Tipo de Vaga</label>
+  <select class="font-sans w-full h-10 pl-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-800">
+      <option >Todas</option>
+      <option>Voluntario</option>
+      <option >Estagiario</option>
+      <option>Freelance</option></select>
+  <label class="font-sans font-semibold text-sm mt-4 mb-4 ">Localização</label>
+  <input class="placeholder:text-gray-400 text-sm rounded-lg border focus:outline-none focus:ring-2 focus: ring-green-800 pl-2 h-10 w-full " type="text" placeholder="Cidade ou país">
+  <label class="font-sans font-semibold text-sm mt-4 mb-4">Nível de Experiência </label>
+  <div class="flex flex-col space-y-2">
+    <label class="font-sans">
+      <input class="mr-2" type="radio" name="nivel" value="Iniciante">Iniciante</label>
+    <label class="font-sans">
+      <input class="mr-2" type="radio" name="nivel" value="Intermediario">Intermediario</label>
+    <label class="font-sans">
+      <input class="mr-2" type="radio" name="nivel" value="Avançado">Avançado</label>
+  </div>
+ </div>
+
+ <div class="bg-white border rounded-lg shadow w-5/12 h-12 mt-8 ml-8 "><div class=""></div>
+
+</div>
+<div class="flex flex-col">
+  <div class="bg-white shadow border rounded-lg space-y-2  w-96 h-80 m-8 p-4 ">
+    <h1 class="font-sans font-semibold text-xl ">Suas Candidaturas</h1>
+   <!--colocar em uma pasta pra poder personalizar-->
+    <div class="bg-gray-50 flex flex-col rounded-lg pl-4 pt-2">
+      <div class="flex flex-row">
+        <div class="flex flex-col">
+          <h3 class="font-sans font-medium text-lg"> tipo de vaga</h3>
+          <p class="font-sans text-gray-500">nome da empresa</p>
+        </div>
+        <div class=" mt-4 mx-auto mr-4">
+          <span class="bg-blue-100 text-blue-800 text-sm flex justify-center items-center w-fit px-2 py-1">Status</span>
+        </div>
+    </div>
+    <i class=" fas fa-calendar-alt  mr-2 "></i><!--bichou, e  fds-->
+    <p class="font-sans text-gray-500 text-sm">Candidatado em: data</p>
+    </div>
+  </div>
+
+  <div class="bg-white shadow border rounded-lg w-96 h-48 ml-8 p-4 ">
+    <h1 class="font-sans font-semibold text-xl">Seu Currículo</h1>
+    <p class="font-sans text-sm font-medium mt-5">Currículo (PDF)</p>
+    <div class="flex flex-col mt-2 "><input class="text-sm text-gray-500" type="file" accept=".PDF, .doc, .docx">
+    <button class="bg-tema-gradient text-white text-sm rounded-2xl h-10 w-36 ml-52 my-4">Cadastrar currículo</button></div>
+  </div>
+</div>
+
+
+</div>
