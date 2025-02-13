@@ -9,5 +9,6 @@ import { DestaqueComponent } from "../../login/menu/destaque/destaque.component"
   styleUrl: './candidatura.component.css'
 })
 export class CandidaturaComponent {
+  statusUser:'Analise'|' Aprovado'= 'Analise';
 
 }
