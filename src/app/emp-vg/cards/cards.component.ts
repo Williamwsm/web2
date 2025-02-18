@@ -9,5 +9,9 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrl: './cards.component.css'
 })
 export class CardsComponent {
+  funcaoEmp: 'minhasVagas' | 'buscarCandidato'| 'candidaturas'| 'addVaga'= 'minhasVagas'
+  selecionarFuncao(funcao: 'minhasVagas' | 'buscarCandidato'| 'candidaturas'| 'addVaga'){
+    return this.funcaoEmp = funcao;
+  }
 
 }
