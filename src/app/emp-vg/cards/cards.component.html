@@ -19,155 +19,17 @@
 
       </div>
   </div>
+  <div class="bg-transparent w-2/3 h-fit flex flex-col space-y-3 ">
   @if (funcaoEmp ==='minhasVagas' ) {
-    <Section class="bg-white shadow rounded-lg border w-2/3 h-fit flex flex-col p-4">
-      <div class="flex flex-row my-2">
-        <h1 class="font-sans font-semibold text-xl">Cargo da vaga</h1>
-        <button class="mx-auto mr-4">
-          <mat-icon>edit</mat-icon></button>
-        <button class="mr-4">
-          <mat-icon>delete</mat-icon></button>
-      </div>
+    <app-minhas-vagas></app-minhas-vagas>
 
-      <div class=" flex flex-row">
-        <p class="text-gray-600 flex text-center text-sm mr-2"><mat-icon>location_on</mat-icon> tipo de vaga</p>
-        <p class="text-gray-600 flex text-center text-sm ">
-          <mat-icon>access_time</mat-icon>numero de horas</p>
-        <p class="flex bg-text-gradient text-transparent bg-clip-text text-sm ml-2 text-center"> numero de Candidaturas</p>
-      </div>
-      <h3 class="font-sans font-semibold text-base my-2">Descrição:</h3>
-      <p class="text-gray-500">descrição da vaga</p>
-
-    </Section>
   }@else if (funcaoEmp=== 'candidaturas') {
-    <Section class="bg-white shadow rounded-lg border w-2/3 h-fit flex flex-col p-4">
-      <div class="flex flex-col"><select class="w-96 h-8 border shadow rounded-lg">
-        <option>Todas</option>
-        <option>Aprovados</option>
-        <option>Pendentes</option>
-      </select>
-    </div>
+    <app-candidaturas></app-candidaturas>
 
-      <div class="flex flex-row font-bold text-base my-4">
-        <h2 class="px-4 font-sans w-60"> Candidato</h2>
-        <h2 class="px-2 font-sans w-80">Vaga</h2>
-        <h2 class="px-2 font-sans  w-56">Status</h2>
-        <h2 class=" font-sans">Currículo</h2>
-        <h2 class="px-4 font-sans ml-auto ">Email</h2>
-      </div>
-
-      <div class="flex flex-row mr-5">
-        <div class="w-8 h-8 rounded-full bg-perfil-user bg-no-repeat bg-[auto_50px] bg-center">
-        </div>
-
-        <p class="ml-2 font-sans font-normal text-base w-52">nome candidato </p>
-        <p class="font-sans text-base w-80"> cargo da vaga</p>
-
-        <select class="border rounded-lg w-32 pl-2 text-sm">
-          <option value="Pendente">Pendente</option>
-          <option value="Aprovado">Aprovado</option>
-          <option value="Reprovado">Reprovado</option>
-        </select>
-        <a class=" ml-auto " href="#"><mat-icon>description</mat-icon></a>
-        <a class="ml-auto" href="#"><mat-icon >email</mat-icon></a>
-      </div>
-      <hr class="mt-4">
-
-    </Section>
   }@else if (funcaoEmp ==='buscarCandidato') {
-    <Section class="bg-white shadow rounded-lg border w-2/3 h-fit flex flex-col p-4">
-      <div class="flex flex-row">
-        <input class="border rounded-lg h-10 w-80 pl-2 mr-4" type="text" placeholder="Habilidades">
-        <input class="border rounded-lg h-10 w-80 pl-2 mr-4" type="text" placeholder="Localização">
-
-        <select class="border rounded-lg h-10 w-80 pl-2">
-          <option value="Tudo">Tudo</option>
-          <option value="EnsinoMedio">Ensino Médio</option>
-          <option value="Graduação">Graduação</option>
-        </select>
-      </div>
-
-      <div class="bg-gray-50 rounded-lg border shadow w-1/2 h-40 mt-5 p-4 flex flex-col">
-        <div class="flex flex-row">
-          <div class="w-12 h-12 rounded-full bg-perfil-user bg-no-repeat bg-[auto_55px] bg-center"></div>
-
-          <div class="flex flex-col ml-4">
-            <h3 class="font-sans font-semibold text-lg">Nome candidato</h3>
-            <p class="text-gray-500 text-sm font-sans">Cargo da vaga</p>
-            <p class="text-sm font-sans text-gray-400 mb-2">Localização</p>
-
-            <div class="flex flex-row">
-              <p class="bg-gray-200 text-xs rounded-md h-5  px-2  mr-2">tecnologia</p>
-              <p class="bg-gray-200 text-xs rounded-md h-5  px-2  mr-2">tecnologia</p>
-            </div>
-          </div>
-        </div>
-
-
-        <div class="flex flex-row ">
-          <p class="p-1 text-lg text-green-600 ">Preferencia de Vaga</p>
-          <button class="bg-tema-gradient text-transparent bg-clip-text text-lg px-4 p-1 mr-8 ml-auto">Contactar</button>
-          <button class=" mr-8"> <mat-icon>description</mat-icon></button>
-        </div>
-
-      </div>
-    </Section>
+    <app-buscar-cand></app-buscar-cand>
   }@else {
-    <Section class="bg-white shadow rounded-lg border w-2/3 h-fit flex flex-col p-4">
-    <h1 class="font-sans font-bold text-xl">Publicar nova vaga</h1>
-    <form >
-      <p class="mt-4 mb-2 font-sans text-sm">Título da vaga</p>
-      <input class="text-sm py-1 border-gray-200 border-2 rounded-lg w-full pl-2 " type="text">
-      <p class="my-2 font-sans text-sm">Descrição</p>
-        <input class="text-sm py-1 pl-2 border-2 border-gray-200 rounded-lg w-full h-20" type="text">
-        <div class="flex flex-row">
-
-          <div class="flex flex-col w-1/2 mr-3">
-            <p class="my-2 font-sans text-sm">Localização</p>
-            <input class="text-sm py-1 pl-2 border-2 border-gray-200 rounded-lg w-full " type="text">
-          </div>
-
-          <div class="flex flex-col w-1/2">
-            <p class="my-2 font-sans text-sm">Tipo de Contrato </p>
-            <select class="text-sm py-1 pl-2 border-2 border-gray-200 rounded-lg w-full" type="text">
-              <option value="Todas">Todas</option>
-              <option value="Voluntário">Voluntário</option>
-              <option value="Estagio">Estágio</option>
-            </select>
-          </div>
-        </div>
-
-      <p class="my-2 font-sans text-sm">Requisitos</p>
-        <input class="text-sm py-1 pl-2 border-2 border-gray-200 rounded-lg w-full h-20" type="text">
-      <p class="my-2 font-sans text-sm">Benefícios</p>
-        <input class="text-sm py-1 pl-2 border-2 border-gray-200 rounded-lg w-full h-20" type="text">
-        <div class="flex flex-row">
-          <div class="flex-col w-1/2 mr-2">
-            <p class="my-2 font-sans text-sm">Nível de Ensino</p>
-        <input class="text-sm py-1 pl-2 border-2 border-gray-200 rounded-lg w-full " type="text">
-          </div>
-          <div class="flex-col w-1/2">
-            <p class="my-2 font-sans text-sm">Número de vagas</p>
-            <input class="text-sm py-1 pl-2 border-2 border-gray-200 rounded-lg w-full" type="number" min="1">
-          </div>
-        </div>
-
-        <div class="flex flex-row">
-          <div class="flex-col w-1/2 mr-2">
-            <p class="my-2 font-sans text-sm">Formação</p>
-            <input class="text-sm py-1 pl-2 border-2 border-gray-200 rounded-lg w-full" type="text">
-          </div>
-          <div class="flex-col w-1/2">
-            <p class="my-2 font-sans text-sm">Carga horária</p>
-            <input class="text-sm py-1 pl-2 border-2 border-gray-200 rounded-lg w-full" type="number" min="4">
-          </div>
-        </div>
-
-    </form>
-    <div class="flex flex-row mt-4 ml-auto">
-      <button class="text-red-700 mr-10 p-2">Cancelar</button>
-    <button class="bg-tema-gradient text-white text-sm font-sans font-semibold rounded-xl p-2">Publicar Vaga</button>
-    </div>
-  </Section>
+  <app-add-vaga></app-add-vaga>
 }
+  </div>
 </div>
