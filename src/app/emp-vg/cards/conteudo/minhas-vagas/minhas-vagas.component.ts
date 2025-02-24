@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 
 
@@ -10,5 +10,9 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrl: './minhas-vagas.component.css'
 })
 export class MinhasVagasComponent {
-
+@Input() cargo:string='';
+@Input() tipoVaga:string='';
+@Input() numeroHoras:string='';
+@Input() numeroCandidaturas:string='';
+@Input() descricaoVaga:string='';
 }

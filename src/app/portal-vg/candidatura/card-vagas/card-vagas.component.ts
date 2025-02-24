@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-card-vagas',
@@ -8,5 +8,11 @@ import { Component } from '@angular/core';
   styleUrl: './card-vagas.component.css'
 })
 export class CardVagasComponent {
-
+  @Input() empresa: string = '';
+  @Input() cargo: string='';
+  @Input() tipoVaga :string='';
+  @Input() vagaLocacao:string='';
+  @Input() horasTrabalho:string='';
+  @Input() tecnologia:string='';
+  @Input() vagaDescricao:string = '';
 }

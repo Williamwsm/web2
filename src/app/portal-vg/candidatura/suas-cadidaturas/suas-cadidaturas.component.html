@@ -1,20 +1,17 @@
 <div class="bg-gray-50 flex flex-col border rounded-lg pl-4 pt-2">
   <div class="flex flex-row">
     <div class="flex flex-col">
-      <h3 class="font-sans font-medium text-lg"> Cargo da vaga</h3>
-      <p class="font-sans text-gray-500">nome da empresa</p>
+      <h3 class="font-sans font-medium text-lg"> {{cargo}}</h3>
+      <p class="font-sans text-gray-500">{{empresa}}</p>
     </div>
 
     <div class=" mt-4 mx-auto mr-4">
-      @if (statusUser==='Aprovado') {
-        <span class="bg-green-100 text-green-800 text-sm flex justify-center items-center w-fit px-2 py-1" >Aprovado</span>
+      <span class="text-sm flex justify-center items-center w-fit px-2 py-1
+      [class]='getStatus()'" >{{status}}</span>
 
-      }@else {
-        <span class="bg-blue-100 text-blue-800 text-sm flex justify-center items-center w-fit px-2 py-1" >Status</span>
-      }
 
     </div>
 </div>
 
-<p class="font-sans text-gray-500 text-sm">Candidatado em: data</p>
+<p class="font-sans text-gray-500 text-sm">Candidatado em:{{dataCandidatura}}</p>
 </div>

@@ -1,6 +1,6 @@
 <Section class="bg-white shadow rounded-lg border w-full h-fit flex flex-col p-4">
   <div class="flex flex-row my-2">
-    <h1 class="font-sans font-semibold text-xl">Cargo da vaga</h1>
+        <h1 class="font-sans font-semibold text-xl">{{cargo}}</h1>
     <button class="mx-auto mr-4">
       <mat-icon>edit</mat-icon></button>
     <button class="mr-4">
@@ -8,12 +8,12 @@
   </div>
 
   <div class=" flex flex-row">
-    <p class="text-gray-600 flex text-center text-sm mr-2"><mat-icon>location_on</mat-icon> tipo de vaga</p>
+    <p class="text-gray-600 flex text-center text-sm mr-2"><mat-icon>location_on</mat-icon> {{tipoVaga}}</p>
     <p class="text-gray-600 flex text-center text-sm ">
-      <mat-icon>access_time</mat-icon>numero de horas</p>
-    <p class="flex bg-text-gradient text-transparent bg-clip-text text-sm ml-2 text-center"> numero de Candidaturas</p>
+      <mat-icon>access_time</mat-icon>{{numeroHoras}}</p>
+    <p class="flex bg-text-gradient text-transparent bg-clip-text text-sm ml-2 text-center"> {{numeroCandidaturas}}</p>
   </div>
   <h3 class="font-sans font-semibold text-base mt-2">Descrição:</h3>
-  <p class="text-gray-500">descrição da vaga</p>
+  <p class="text-gray-500">{{descricaoVaga}}</p>
 
 </Section>

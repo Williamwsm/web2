@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-suas-cadidaturas',
@@ -8,6 +8,15 @@ import { Component } from '@angular/core';
   styleUrl: './suas-cadidaturas.component.css'
 })
 export class SuasCadidaturasComponent {
-  statusUser:'Analise'|'Aprovado'= 'Analise';
+  @Input() status:'Analise'|'Aprovado'= 'Analise';
+  @Input() cargo: string = '';
+  @Input() empresa: string ='';
+  @Input() dataCandidatura:string='';
 
+  getStatus(){
+    return{
+      'bg-green-100 text-green-800': this.status ==='Aprovado',
+      'bg-blue-100 text-blue-800': this.status ==='Analise'
+    };
+  }
 }
