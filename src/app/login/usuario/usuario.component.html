@@ -20,106 +20,10 @@
 
   <!-- Formulário do Candidato -->
    @if(tipoUsuario === 'candidato' ){
-    <form
-    class="m-2 w-auto"
-  >
-    <div class="mt-6 mb-4">
-      <input
-        type="text"
-        class="placeholder:text-gray-500 border rounded-md border-zinc-400 text-sm w-full h-10 p-3"
-        placeholder="Nome completo"
-        required
-      />
-    </div>
-    <div class="mb-4">
-      <input
-        type="email"
-        class="placeholder:text-gray-500 border rounded-md border-zinc-400 text-sm w-full h-10 p-3"
-        placeholder="Email"
-        required
-      />
-    </div>
-    <div class="mb-4">
-      <input
-        type="tel"
-        class="placeholder:text-gray-500 border rounded-md border-zinc-400 text-sm w-full h-10 p-3"
-        placeholder="telefone"
-        required
-      />
-    </div>
-    <div class="mb-4">
-      <input
-        type="text"
-        class="placeholder:text-gray-500 border rounded-md border-zinc-400 text-sm w-full h-10 p-3"
-        placeholder="Endereço"
-        required
-      />
-    </div>
-    <div class="mb-4">
-      <input
-        type="password"
-        class="placeholder:text-gray-500 border rounded-md border-zinc-400 text-sm w-full h-10 p-3"
-        placeholder="Senha"
-        required
-      />
-    </div>
-
-  </form>
+    <app-form-user></app-form-user>
    } @else {
-
-    <form
-
-       class="m-2 w-auto"
-  >
-    <div class="mt-6 mb-4">
-      <input
-        type="text"
-        class="placeholder:text-gray-500 border rounded-md border-zinc-400 text-sm w-full h-10 p-3"
-        placeholder="Razão social"
-        required
-      />
-    </div>
-    <div class="mb-4">
-      <input
-        type="text"
-        class="placeholder:text-gray-500 border rounded-md border-zinc-400 text-sm w-full h-10 p-3"
-        placeholder="CNPJ"
-        required
-      />
-    </div>
-    <div class="mb-4">
-      <input
-        type="email"
-        class="placeholder:text-gray-500 border rounded-md border-zinc-400 text-sm w-full h-10 p-3"
-        placeholder="Email corporativo"
-        required
-      />
-    </div>
-    <div class="mb-4">
-      <input
-        type="tel"
-        class="placeholder:text-gray-500 border rounded-md border-zinc-400 text-sm w-full h-10 p-3"
-        placeholder="telefone"
-        required
-      />
-    </div>
-    <div class="mb-4">
-      <input
-        type="text"
-        class="placeholder:text-gray-500 border rounded-md border-zinc-400 text-sm w-full h-10 p-3"
-        placeholder="Endereço"
-        required
-      />
-    </div>
-    <div class="mb-4">
-      <input
-        type="password"
-        class="placeholder:text-gray-500 border rounded-md border-zinc-400 text-sm w-full h-10 p-3"
-        placeholder="Senha"
-        required
-      />
-    </div>
-  </form>}
+    <app-form-emp></app-form-emp>
+}
 
 
   <button class="bg-tema-gradient rounded-xl ml-80 text-white font-sans text-sm h-8 w-20 mb-4">

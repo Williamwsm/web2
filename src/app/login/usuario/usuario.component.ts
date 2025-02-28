@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
+import { FormUserComponent } from "../forms/form-user/form-user.component";
+import { FormEmpComponent } from "../forms/form-emp/form-emp.component";
 
 @Component({
   selector: 'app-usuario',
   standalone: true,
-  imports: [],
+  imports: [FormUserComponent, FormEmpComponent],
   templateUrl: './usuario.component.html',
   styleUrl: './usuario.component.css'
 })
