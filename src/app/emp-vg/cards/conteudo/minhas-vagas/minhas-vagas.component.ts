@@ -1,11 +1,13 @@
 import { Component, Input } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
+import { VgCriadaPipe } from '../../../../vg-criada.pipe';
+import { VgEncerramentoPipe } from '../../../../vg-encerramento.pipe';
 
 
 @Component({
   selector: 'app-minhas-vagas',
   standalone: true,
-  imports: [MatIconModule],
+  imports: [MatIconModule,VgCriadaPipe, VgEncerramentoPipe ],
   templateUrl: './minhas-vagas.component.html',
   styleUrl: './minhas-vagas.component.css'
 })

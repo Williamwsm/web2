@@ -7,19 +7,34 @@
     <input
       class="text-sm py-1 border-gray-200 border-2 rounded-lg w-full pl-2"
       type="text"
+      [(ngModel)]="titulo"
+      name="titulo"
+      maxlength="75"
     />
+    <p class="text-sm text-gray-500 font-sans pl-2">{{titulo.length}}/75</p>
+
     <p class="my-2 font-sans text-sm">Descrição</p>
     <input
       class="text-sm py-1 pl-2 border-2 border-gray-200 rounded-lg w-full h-20"
       type="text"
+      [(ngModel)]="descricao"
+      name="descricao"
+      maxlength="800"
+
     />
+    <p class="text-sm text-gray-500 font-sans pl-2">{{descricao.length}}/800</p>
+
     <div class="flex flex-row">
       <div class="flex flex-col w-1/2 mr-3">
         <p class="my-2 font-sans text-sm">Localização</p>
         <input
           class="text-sm py-1 pl-2 border-2 border-gray-200 rounded-lg w-full"
           type="text"
+          [(ngModel)]="localizacao"
+          name="localizacao"
+          maxlength="50"
         />
+        <p class="text-sm text-gray-500 font-sans pl-2">{{localizacao.length}}/50</p>
       </div>
 
       <div class="flex flex-col w-1/2">
@@ -40,26 +55,42 @@
     <input
       class="text-sm py-1 pl-2 border-2 border-gray-200 rounded-lg w-full h-20"
       type="text"
+      [(ngModel)]="requisitos"
+      name="requisitos"
+      maxlength="600"
     />
+    <p class="text-sm text-gray-500 font-sans pl-2">{{requisitos.length}}/600</p>
     <p class="my-2 font-sans text-sm">Benefícios</p>
     <input
       class="text-sm py-1 pl-2 border-2 border-gray-200 rounded-lg w-full h-20"
       type="text"
+      [(ngModel)]="beneficios"
+      name="beneficios"
+      maxlength="600"
     />
+    <p class="text-sm text-gray-500 font-sans pl-2">{{beneficios.length}}/600</p>
     <div class="flex flex-row">
       <div class="flex-col w-1/2 mr-2">
         <p class="my-2 font-sans text-sm">Nível de Ensino</p>
         <input
           class="text-sm py-1 pl-2 border-2 border-gray-200 rounded-lg w-full"
           type="text"
+          [(ngModel)]="nEnsino"
+          name="nEnsino"
+          maxlength="40"
         />
+        <p class="text-sm text-gray-500 font-sans pl-2">{{nEnsino.length}}/40</p>
       </div>
       <div class="flex-col w-1/2 mr-2">
         <p class="my-2 font-sans text-sm">Formação</p>
         <input
           class="text-sm py-1 pl-2 border-2 border-gray-200 rounded-lg w-full"
           type="text"
+          [(ngModel)]="formacao"
+          name="formacao"
+          maxlength="50"
         />
+        <p class="text-sm font-sans text-gray-500 pl-2">{{formacao.length}}/50</p>
       </div>
     </div>
 

@@ -1,4 +1,4 @@
-<form class="m-2 w-auto flex flex-col space-y-4 ">
+<form class="m-2 w-auto flex flex-col space-y-4">
   <input
     type="text"
     class="placeholder:text-gray-500 border rounded-md border-zinc-400 text-sm w-full h-10 mt-2 p-3"
@@ -10,6 +10,8 @@
     class="placeholder:text-gray-500 border rounded-md border-zinc-400 text-sm w-full h-10 p-3"
     placeholder="CNPJ"
     required
+    formControlName="cnpj"
+    mask="00.000.000/0000-00"
   />
   <input
     type="email"
@@ -22,6 +24,8 @@
     class="placeholder:text-gray-500 border rounded-md border-zinc-400 text-sm w-full h-10 p-3"
     placeholder="Telefone"
     required
+    formControlName="telefone"
+    mask="(00) 0000-0000||(00) 0 0000-0000"
   />
   <input
     type="text"
@@ -30,17 +34,19 @@
     required
   />
   <input
-      type="text"
-      class="placeholder:text-gray-500 border rounded-md border-zinc-400 text-sm w-full h-10 p-3"
-      placeholder="CEP"
-      required
-    />
-    <input
-      type="text"
-      class="placeholder:text-gray-500 border rounded-md border-zinc-400 text-sm w-full h-10 p-3"
-      placeholder="Rua"
-      required
-    />
+    type="text"
+    class="placeholder:text-gray-500 border rounded-md border-zinc-400 text-sm w-full h-10 p-3"
+    placeholder="CEP"
+    required
+    formControlName="cep"
+    mask="00000-000"
+  />
+  <input
+    type="text"
+    class="placeholder:text-gray-500 border rounded-md border-zinc-400 text-sm w-full h-10 p-3"
+    placeholder="Rua"
+    required
+  />
 
   <input
     type="password"
