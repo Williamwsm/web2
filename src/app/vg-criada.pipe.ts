@@ -5,7 +5,6 @@ import { Pipe, PipeTransform } from '@angular/core';
   standalone: true
 })
 export class VgCriadaPipe implements PipeTransform {
-
     transform(dataCriacao: Date): string {
       const agora = new Date();
       const segundos = Math.floor((agora.getTime() - new Date(dataCriacao).getTime()) / 1000);
