@@ -1,7 +1,5 @@
-import { InteractivityChecker } from "@angular/cdk/a11y";
-
 export interface Candidato {
-  cidNrId:Number
+  cidNrId:number
   canTxNome:string
   canTxCpf:string
   canTxRua ?:string
