@@ -8,6 +8,7 @@ import { Vaga } from '../model/vaga';
 import { Observable } from 'rxjs';
 import { Endereco } from '../model/endereco';
 import { ResponseApi } from '../model/reponseapi';
+import { PageResponse } from '../model/pageResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -36,8 +37,7 @@ export class ApiService {
     return this.http.get<ResponseApi<Endereco>>(`${this.urlApi}/via-cep/buscar-endereco/${cep}`);
   }
 
-  buscarVagas():Observable<ResponseApi<Vaga>>{
-    return this.http.get<ResponseApi<Vaga>>(`${this.urlApi}/vagas`);
+  buscarVagas():Observable<ResponseApi<PageResponse<Vaga>>>{
+    return this.http.get<ResponseApi<PageResponse<Vaga>>>(`${this.urlApi}/vagas`);
   }
-
 }

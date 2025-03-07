@@ -1,17 +1,34 @@
 <div class="flex flex-row ">
  <app-filtros></app-filtros>
 
- <div class="bg-white border rounded-lg shadow w-5/12 h-fit mt-8 ml-8 ">
-  <input type="text" class="bg-busca bg-no-repeat bg-clip-padding bg-custom-right bg-[auto_20px] border-green-900 border-2 rounded-full text-sm placeholder:text-gray-500 flex mx-auto w-5/6  h-14 my
-  my-8 pl-5 "
-  placeholder="Buscar vagas...">
- <!--criar um componente proprio pra vagas q seram mostradas-->
-  <div class="flex flex-col">
-    <app-card-vagas></app-card-vagas>
+<div class="w-5/12 flex flex-col gap-5">
+  <div class="bg-white border rounded-lg shadow w-full  mt-8 ml-8 overflow-y-scroll max-h-[75vh]">
+    <input type="text" class="bg-busca bg-no-repeat bg-clip-padding bg-custom-right bg-[auto_20px] border-green-900 border-2 rounded-full text-sm placeholder:text-gray-500 flex mx-auto w-5/6  h-14 my
+    my-8 pl-5 "
+    placeholder="Buscar vagas...">
+   <!--criar um componente proprio pra vagas q seram mostradas-->
+    <div class="flex flex-col">
+
+      @for (item of vagas; track $index) {
+        <app-card-vagas [vagaDescricao]="item.vagTxDescricao"
+        [horasTrabalho]="item.vagNrCargaHorariaSemanal"
+        ></app-card-vagas>
+
+        <app-card-vagas [vagaDescricao]="item.vagTxDescricao"
+        [horasTrabalho]="item.vagNrCargaHorariaSemanal"
+        ></app-card-vagas>
+      }
+
+    </div>
 
   </div>
-
+  <div class="justify-center items-center flex w-full">
+    <p>
+      1, 2, 3
+    </p>
+  </div>
 </div>
+
 <div class="flex flex-col">
   <div class="bg-white shadow border rounded-lg space-y-3 flex flex-col  w-96 h-80 m-8 p-4 ">
     <h1 class="font-sans font-semibold text-xl ">Suas Candidaturas</h1>
