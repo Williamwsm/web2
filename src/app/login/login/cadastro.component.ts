@@ -8,9 +8,8 @@ import { UsuarioComponent } from "../usuario/usuario.component";
   selector: 'app-login',
   standalone: true,
   imports: [MenuBarComponent, DestaqueComponent, CardComponent, UsuarioComponent],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  templateUrl: './cadastro.component.html',
 })
-export class LoginComponent {
+export class CadastroComponent {
 
 }

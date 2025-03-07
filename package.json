@@ -12,7 +12,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^18.2.0",
+    "@angular/animations": "^18.2.13",
     "@angular/cdk": "^18.2.14",
     "@angular/common": "^18.2.0",
     "@angular/compiler": "^18.2.0",
@@ -24,8 +24,12 @@
     "@angular/platform-server": "^18.2.0",
     "@angular/router": "^18.2.0",
     "@angular/ssr": "^18.2.3",
+    "@fortawesome/fontawesome-free": "^6.7.2",
     "express": "^4.18.2",
+    "fortawesome": "^0.0.1-security",
+    "jwt-decode": "^4.0.0",
     "ngx-mask": "^19.0.6",
+    "ngx-toastr": "^19.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.10"

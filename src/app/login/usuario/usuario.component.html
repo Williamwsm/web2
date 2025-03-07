@@ -1,32 +1,30 @@
 <section class="w-fit mx-auto mt-28 mb-4">
   <!-- Botões para selecionar o tipo de usuário -->
   <div>
-    <button
-      class="bg-zinc-100 m-2 border-2 border-black rounded-lg font-sans text-sm w-48 h-12"
-      [class.bg-tema-gradient]="tipoUsuario === 'candidato'"
-      [class.text-white]="tipoUsuario === 'candidato'"
-      (click)="selecionarTipo('candidato')"
+    <button class="bg-zinc-100 m-2 border-2 border-black rounded-lg font-sans text-sm w-48 h-12"
+      [class.bg-tema-gradient]="tipoUsuario === 'candidato'" [class.text-white]="tipoUsuario === 'candidato'"
+      (click)="selecionarTipo('candidato')">Candidato</button>
 
-    >Candidato</button>
-
-    <button
-      class="bg-zinc-100 m-2 border-2 border-black rounded-lg font-sans text-sm w-48 h-12"
-      [class.bg-tema-gradient]="tipoUsuario === 'empresa'"
-      [class.text-white]="tipoUsuario === 'empresa'"
-      (click)="selecionarTipo('empresa')"
-
-    >Empresa</button>
+    <button class="bg-zinc-100 m-2 border-2 border-black rounded-lg font-sans text-sm w-48 h-12"
+      [class.bg-tema-gradient]="tipoUsuario === 'empresa'" [class.text-white]="tipoUsuario === 'empresa'"
+      (click)="selecionarTipo('empresa')">Empresa</button>
   </div>
 
-  <!-- Formulário do Candidato -->
-   @if(tipoUsuario === 'candidato' ){
-    <app-form-user></app-form-user>
-   } @else {
+  <div class="bg-white rounded-lg shadow-xl p-2 gap-5 flex flex-col">
+    <!-- Formulário do Candidato -->
+    @if(tipoUsuario === 'candidato' ){
+    <app-form-user (formProntoEmiter)="gerenciarEnable($event)"
+      (formDadosEmiter)="AdicionarCandidato($event)"></app-form-user>
+    } @else {
     <app-form-emp></app-form-emp>
-}
+    }
+    <button [ngClass]="{
+  'rounded-xl ml-80 text-white font-sans text-sm h-8 w-20':true,
+  'bg-gray-300': !isEnable, 'bg-tema-gradient':isEnable,
+}" [disabled]="!isEnable" (click)="submit()">
+      Cadastrar
+    </button>
+  </div>
 
 
-  <button class="bg-tema-gradient rounded-xl ml-80 text-white font-sans text-sm h-8 w-20 mb-4">
-    Cadastrar
-  </button>
 </section>

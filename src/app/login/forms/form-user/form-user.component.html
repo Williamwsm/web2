@@ -1,9 +1,9 @@
-<form class="m-2 w-auto flex flex-col  space-y-4  ">
+<form class="m-2 w-auto flex flex-col  space-y-4" [formGroup]="meuFormulario">
   <input
     type="text"
     class="placeholder:text-gray-500 border rounded-md border-zinc-400 text-sm w-full mt-2 h-10 p-3"
     placeholder="Nome completo"
-    required
+    formControlName="nome"
   />
   <input
   type="text"
@@ -18,43 +18,53 @@
     type="email"
     class="placeholder:text-gray-500 border rounded-md border-zinc-400 text-sm w-full h-10 p-3"
     placeholder="Email"
-    required
+    formControlName="email"
   />
 
   <input
     type="tel"
     class="placeholder:text-gray-500 border rounded-md border-zinc-400 text-sm w-full h-10 p-3"
     placeholder="Telefone"
-    required
     formControlName="telefone"
     mask="(00) 0000-0000||(00) 0 0000-0000"
 />
 
   <input
     type="text"
-    class="placeholder:text-gray-500 border rounded-md border-zinc-400 text-sm w-full h-10 p-3"
+    [ngClass]="{
+      'placeholder:text-gray-500 border rounded-md border-zinc-400 text-sm w-full h-10 p-3': true,
+      'bg-gray-300': isCamposBloqueados,
+    }"
     placeholder="Logradouro"
-    required
+    [required] = "!isCamposBloqueados"
+    [disabled] = "isCamposBloqueados"
+    formControlName="logradouro"
   />
   <input
   type="text"
   class="placeholder:text-gray-500 border rounded-md border-zinc-400 text-sm w-full h-10 p-3"
   placeholder="CEP"
-  required
+  required = 'is'
   formControlName="cep"
+  (input)="buscarCep($event)"
   mask="00000-000"
 />
   <input
     type="text"
-    class="placeholder:text-gray-500 border rounded-md border-zinc-400 text-sm w-full h-10 p-3"
+    [ngClass]="{
+      'placeholder:text-gray-500 border rounded-md border-zinc-400 text-sm w-full h-10 p-3': true,
+      'bg-gray-300': isCamposBloqueados,
+
+    }"
     placeholder="Rua"
-    required
+    formControlName="rua"
   />
 
   <input
     type="password"
     class="placeholder:text-gray-500 border rounded-md border-zinc-400 text-sm w-full h-10 p-3"
     placeholder="Senha"
-    required
+    formControlName="senha"
   />
+
 </form>

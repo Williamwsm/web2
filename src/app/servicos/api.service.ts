@@ -1,25 +1,27 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { ambiente } from '../../ambientes/ambiente';
 import { Login } from '../model/login';
 import { Candidato } from '../model/candidato';
 import { Empresa } from '../model/empresa';
 import { Vaga } from '../model/vaga';
+import { Observable } from 'rxjs';
+import { Endereco } from '../model/endereco';
+import { ResponseApi } from '../model/reponseapi';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
   private urlApi = ambiente.urlApi;
+  private http = inject(HttpClient);
 
-  constructor(private http: HttpClient) {}
-
-  login(form: Login) {
-    return this.http.post(`${this.urlApi}/usuarios/login`, form );
+  login(form: Login):Observable<ResponseApi<string>> {
+    return this.http.post<ResponseApi<string>>(`${this.urlApi}/usuarios/login`, form );
   }
 
-  candidato(form: Candidato) {
-    return this.http.post(`${this.urlApi}/candidatos/cadastrar`, form );
+  cadasTrarCandidato(form: Candidato) : Observable<void> {
+    return this.http.post<void>(`${this.urlApi}/candidatos/cadastrar`, form );
   }
 
   empresa(form: Empresa ) {
@@ -29,4 +31,13 @@ export class ApiService {
   vaga(form: Vaga ) {
     return this.http.post(`${this.urlApi}/empresas/vagas/cadastrar`, form );
   }
+
+  buscarEnderecoPorCep(cep:string):Observable<ResponseApi<Endereco>>{
+    return this.http.get<ResponseApi<Endereco>>(`${this.urlApi}/via-cep/buscar-endereco/${cep}`);
+  }
+
+  buscarVagas():Observable<ResponseApi<Vaga>>{
+    return this.http.get<ResponseApi<Vaga>>(`${this.urlApi}/vagas`);
+  }
+
 }

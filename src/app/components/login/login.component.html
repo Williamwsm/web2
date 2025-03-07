@@ -1,0 +1,32 @@
+<div class="flex flex-col gap-8 justify-center items-center h-full  bg-zinc-100">
+
+  <form class="w-96 flex flex-col p-8 gap-8 shadow-xl rounded-md bg-white" [formGroup]="loginForm" (ngSubmit)="login()">
+
+    <h1 class="text-3xl text-center">Login</h1>
+    <div class="flex  relative items-center w-full">
+      <!-- <app-input type="text" placheholder="usuario@example.com" class="w-full" formControlName="email"/> -->
+
+      <input type="email" class="placeholder:text-gray-500 border rounded-md border-zinc-400 text-sm w-full h-10 p-3"
+        placeholder="Email" formControlName="email" />
+      <!-- <fa-icon [icon]="mail" class="absolute right-0 -bottom-0.5 text-2xl" /> -->
+    </div>
+
+    <div class="flex relative items-center w-full">
+      <input type="password" class="placeholder:text-gray-500 border rounded-md border-zinc-400 text-sm w-full h-10 p-3"
+        placeholder="Senha" formControlName="password" />
+    </div>
+
+    <div class="w-full flex relative justify-center">
+      <button [ngClass]="{
+        'rounded-xl text-white font-sans text-sm h-8 w-20':true,
+        'bg-gray-300': !loginForm.valid, 'bg-tema-gradient':loginForm.valid,
+      }" [disabled]="!loginForm.valid">
+            Login
+          </button>
+    </div>
+    <div class="flex justify-end">
+      <a routerLink="/cadastrar">Registre-se</a>
+    </div>
+
+  </form>
+</div>
