@@ -1,0 +1,75 @@
+<app-menu></app-menu>
+<div class="bg-gray-100 w-full h-full">
+  <div class="min-h-screen bg-gray-100 flex items-center justify-center">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-2xl">
+      <h2 class="text-2xl font-medium mb-4 text-center">
+        Informações Pessoais
+      </h2>
+      <div
+        class="bg-perfil-user bg-no-repeat bg-center rounded-full h-16 w-16 bg-[auto_65px] mx-auto"
+      ></div>
+      <div class="space-y-2">
+        <label class="block text-sm font-medium text-gray-700">Cidade</label>
+        <p
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+        >
+          {{ cidade }}
+        </p>
+
+        <label class="block text-sm font-medium text-gray-700">CNPJ</label>
+        <p
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+        >
+          {{ cnpj }}
+        </p>
+
+        <label class="block text-sm font-medium text-gray-700"
+          >Razão Social</label
+        >
+        <p
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+        >
+          {{ razaoSocial }}
+        </p>
+
+        <label class="block text-sm font-medium text-gray-700">Telefone</label>
+        <p
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+        >
+          {{ telefone }}
+        </p>
+
+        <label class="block text-sm font-medium text-gray-700">Rua</label>
+        <p
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+        >
+          {{ rua }}
+        </p>
+
+        <label class="block text-sm font-medium text-gray-700">CEP</label>
+        <p
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+        >
+          {{ cep }}
+        </p>
+
+        <label class="block text-sm font-medium text-gray-700"
+          >Logradouro</label
+        >
+        <p
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+        >
+          {{ logradouro }}
+        </p>
+
+        <label class="block text-sm font-medium text-gray-700">Email</label>
+        <p
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+        >
+          {{ email }}
+        </p>
+        <button class="bg-tema-gradient text-white flex mx-auto mr-4 rounded-xl px-4 py-2">Editar Perfil</button>
+      </div>
+    </div>
+  </div>
+</div>
