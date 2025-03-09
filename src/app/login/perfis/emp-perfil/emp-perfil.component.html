@@ -8,68 +8,60 @@
       <div
         class="bg-perfil-user bg-no-repeat bg-center rounded-full h-16 w-16 bg-[auto_65px] mx-auto"
       ></div>
-      <div class="space-y-2">
-        <label class="block text-sm font-medium text-gray-700">Cidade</label>
-        <p
-          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
-        >
-          {{ cidade }}
-        </p>
+      <form class="m-2 w-auto flex flex-col space-y-4">
+        <input
+          type="text"
+          class="placeholder:text-gray-500 border rounded-md border-zinc-400 text-sm w-full h-10 mt-2 p-3"
+          placeholder="Razão social"
+          required
+        />
+        <input
+          type="text"
+          class="placeholder:text-gray-500 border rounded-md border-zinc-400 text-sm w-full h-10 p-3"
+          placeholder="CNPJ"
+          required
+          formControlName="cnpj"
+          mask="00.000.000/0000-00"
+        />
 
-        <label class="block text-sm font-medium text-gray-700">CNPJ</label>
-        <p
-          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
-        >
-          {{ cnpj }}
-        </p>
+        <input
+          type="tel"
+          class="placeholder:text-gray-500 border rounded-md border-zinc-400 text-sm w-full h-10 p-3"
+          placeholder="Telefone"
+          required
+          formControlName="telefone"
+          mask="(00) 0000-0000||(00) 0 0000-0000"
+        />
+        <input
+          type="text"
+          class="placeholder:text-gray-500 border rounded-md border-zinc-400 text-sm w-full h-10 p-3"
+          placeholder="Logradouro"
+          required
+        />
+        <input
+          type="text"
+          class="placeholder:text-gray-500 border rounded-md border-zinc-400 text-sm w-full h-10 p-3"
+          placeholder="CEP"
+          required
+          formControlName="cep"
+          mask="00000-000"
+        />
+        <input
+          type="text"
+          class="placeholder:text-gray-500 border rounded-md border-zinc-400 text-sm w-full h-10 p-3"
+          placeholder="Rua"
+          required
+        />
+        <input
+          type="email"
+          class="placeholder:text-gray-500 bg-gray-300 border rounded-md border-zinc-400 text-sm w-full h-10 p-3"
+          placeholder="Email corporativo"
+          required
+        />
 
-        <label class="block text-sm font-medium text-gray-700"
-          >Razão Social</label
-        >
-        <p
-          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
-        >
-          {{ razaoSocial }}
-        </p>
 
-        <label class="block text-sm font-medium text-gray-700">Telefone</label>
-        <p
-          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
-        >
-          {{ telefone }}
-        </p>
-
-        <label class="block text-sm font-medium text-gray-700">Rua</label>
-        <p
-          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
-        >
-          {{ rua }}
-        </p>
-
-        <label class="block text-sm font-medium text-gray-700">CEP</label>
-        <p
-          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
-        >
-          {{ cep }}
-        </p>
-
-        <label class="block text-sm font-medium text-gray-700"
-          >Logradouro</label
-        >
-        <p
-          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
-        >
-          {{ logradouro }}
-        </p>
-
-        <label class="block text-sm font-medium text-gray-700">Email</label>
-        <p
-          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
-        >
-          {{ email }}
-        </p>
-        <button class="bg-tema-gradient text-white flex mx-auto mr-4 rounded-xl px-4 py-2">Editar Perfil</button>
-      </div>
+      </form>
+      <button class="bg-tema-gradient rounded-xl flex mx-auto mr-4 text-sm text-white font-sans px-4 py-2">Salvar</button>
     </div>
   </div>
 </div>

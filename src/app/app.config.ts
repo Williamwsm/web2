@@ -8,6 +8,9 @@ import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/
 import { httpInterceptor } from './inteceptors/http-interceptor.interceptor';
 import { provideToastr } from 'ngx-toastr';
 
+import { provideLottieOptions } from 'ngx-lottie';
+import player from 'lottie-web';
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
@@ -15,6 +18,7 @@ export const appConfig: ApplicationConfig = {
      provideClientHydration(),
      provideHttpClient(withFetch(), withInterceptors([httpInterceptor])),
      provideToastr(),
-     provideAnimationsAsync()
+     provideAnimationsAsync(),
+     provideLottieOptions({ player: () => player }),
   ]
 };

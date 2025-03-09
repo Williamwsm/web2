@@ -1,17 +1,17 @@
-<div class="bg-gray-50 flex flex-col border rounded-lg pl-4 pt-2">
-  <div class="flex flex-row">
-    <div class="flex flex-col">
-      <h3 class="font-sans font-medium text-lg"> {{cargo}}</h3>
-      <p class="font-sans text-gray-500">{{empresa}}</p>
+
+    <div class="bg-white shadow-xl flex flex-col border rounded-lg pl-4 pt-2">
+      <div class="flex flex-row">
+        <div class="flex flex-col">
+          <h3 class="font-sans font-medium text-lg"> {{vaga!.vagTxTitulo}}</h3>
+          <p class="font-sans text-gray-500">{{vaga!.empTxNome}}</p>
+        </div>
+
+        <div class=" mt-4 mx-auto mr-4"> <!--ver pq n ta dando certo se n @if-->
+          <span class="bg-blue-100 text-blue-800 text-sm flex justify-center items-center w-fit px-2 py-1
+              [ngclass]='getStatus(status)'">{{status}}</span>
+
+        </div>
+      </div>
+      <!-- <p class="font-sans text-gray-500 text-sm">Candidatado em:{{dataCandidatura}}</p> -->
     </div>
 
-    <div class=" mt-4 mx-auto mr-4"> <!--ver pq n ta dando certo se n @if-->
-      <span class="bg-blue-100 text-blue-800 text-sm flex justify-center items-center w-fit px-2 py-1
-      [ngclass]='getStatus(status)'" >{{status}}</span>
-
-
-    </div>
-</div>
-
-<p class="font-sans text-gray-500 text-sm">Candidatado em:{{dataCandidatura}}</p>
-</div>

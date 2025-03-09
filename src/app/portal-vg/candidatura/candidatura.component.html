@@ -1,49 +1,64 @@
-<div class="flex flex-row ">
- <app-filtros></app-filtros>
+<div class="flex flex-row gap-5 justify-center">
+  <app-filtros (hibridoChange)="onHibridoChange($event)" (presencialChange)="onPresencialChange($event)"
+    (remotoChange)="onRemotoChange($event)" [estados]="estados" (estadoChange)="onEstadoChange($event)"
+    (cidadeChange)="onCidadeChange($event)" (experienciaChange)="onExperienciaChange($event)"
+    (tipoVagaChange)="ontTipoVagaChange($event)" [quantidadeVagas]="vagas == null ? 0 : vagas.length"></app-filtros>
 
-<div class="w-5/12 flex flex-col gap-5">
-  <div class="bg-white border rounded-lg shadow w-full  mt-8 ml-8 overflow-y-scroll max-h-[75vh]">
-    <input type="text" class="bg-busca bg-no-repeat bg-clip-padding bg-custom-right bg-[auto_20px] border-green-900 border-2 rounded-full text-sm placeholder:text-gray-500 flex mx-auto w-5/6  h-14 my
-    my-8 pl-5 "
-    placeholder="Buscar vagas...">
-   <!--criar um componente proprio pra vagas q seram mostradas-->
-    <div class="flex flex-col">
+  <div class="w-5/12 flex flex-col gap-5">
+    <div class="bg-white border rounded-lg  w-full  mt-8 ml-8 overflow-y-scroll max-h-[75vh] pb-5">
+      <input type="text" class="bg-busca bg-no-repeat bg-clip-padding bg-custom-right bg-[auto_20px] border-green-900 border-2 rounded-full text-sm placeholder:text-gray-500 flex mx-auto w-5/6  h-14 my
+    my-8 pl-5 " placeholder="Buscar vagas...">
+      <!--criar um componente proprio pra vagas q seram mostradas-->
+      <div class="flex flex-col gap-5 px-5">
 
-      @for (item of vagas; track $index) {
-        <app-card-vagas [vagaDescricao]="item.vagTxDescricao"
-        [horasTrabalho]="item.vagNrCargaHorariaSemanal"
-        ></app-card-vagas>
-
-        <app-card-vagas [vagaDescricao]="item.vagTxDescricao"
-        [horasTrabalho]="item.vagNrCargaHorariaSemanal"
-        ></app-card-vagas>
-      }
+        @if (vagas!=null && !vaga) {
+        @if (vagas.length >0) {
+        @for (item of vagas; track $index) {
+        <app-card-vagas [vaga]="item" (changeVaga)="onChangeVaga($event)"></app-card-vagas>
+        }
+        }@else {
+        <app-empty menssagem="Não há vagas" />
+        }
+        }
+      </div>
 
     </div>
-
-  </div>
-  <div class="justify-center items-center flex w-full">
-    <p>
-      1, 2, 3
-    </p>
-  </div>
-</div>
-
-<div class="flex flex-col">
-  <div class="bg-white shadow border rounded-lg space-y-3 flex flex-col  w-96 h-80 m-8 p-4 ">
-    <h1 class="font-sans font-semibold text-xl ">Suas Candidaturas</h1>
-   <!--colocar em uma pasta pra poder personalizar-->
-
-    <app-suas-cadidaturas></app-suas-cadidaturas>
-    <app-suas-cadidaturas></app-suas-cadidaturas>
+    <div class="justify-center items-center flex w-full">
+      <p>
+        1, 2, 3
+      </p>
+    </div>
   </div>
 
-  <div class="bg-white shadow border rounded-lg w-96 h-48 ml-8 p-4 ">
-    <h1 class="font-sans font-semibold text-xl">Seu Currículo</h1>
-    <p class="font-sans text-sm font-medium mt-5">Link do Currículo</p>
-    <div class="flex flex-col mt-2 ">
-      <input class="text-sm text-gray-500 border-gray-500 border  rounded-xl h-8 pl-2"  type="url">
-    <button class="bg-tema-gradient text-white text-base rounded-xl w-40 h-10 ml-48 my-4 p-1 mr-4">Cadastrar currículo</button></div>
+  <div class="flex flex-col">
+    <div class="bg-white shadow border rounded-lg space-y-3 flex flex-col  w-96 h-80 m-8 p-4 overflow-y-scroll ">
+      <h1 class="font-sans font-semibold text-xl ">Suas Candidaturas</h1>
+      <!--colocar em uma pasta pra poder personalizar-->
+      <div class="flex flex-col gap-3">
+        @if (vagasCandidato) {
+          @if (vagasCandidato.length>0) {
+            @for (item of vagasCandidato; track $index) {
+              <app-suas-cadidaturas [vaga]="item" ></app-suas-cadidaturas>
+            }
+          }@else {
+            <h2 class="font-medium">Você não possui nenhuma candidatura ativa</h2>
+          }
+        }
+      </div>
+    </div>
+
+    <div class="bg-white shadow border rounded-lg w-96 h-48 ml-8 p-4 ">
+      <h1 class="font-sans font-semibold text-xl">Seu Currículo</h1>
+      <p class="font-sans text-sm font-medium mt-5">Link do Currículo</p>
+      <div class="flex flex-col mt-2 ">
+        <input class="text-sm text-gray-500 border-gray-500 border  rounded-xl h-8 pl-2" type="url">
+        <button class="bg-tema-gradient text-white text-base rounded-xl w-40 h-10 ml-48 my-4 p-1 mr-4">Cadastrar
+          currículo</button>
+      </div>
+    </div>
   </div>
-</div>
+
+  @if (vaga) {
+  <app-confirmar-vaga  [vaga]="vaga" (vagaChange)="onChangeVaga($event)"/>
+  }
 </div>
