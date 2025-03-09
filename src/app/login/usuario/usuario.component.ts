@@ -39,15 +39,11 @@ export class UsuarioComponent {
     this.apiService.cadasTrarCandidato(this.candidato)
       .subscribe({
         next: (value) => {
-          // Processar o valor da resposta
-          alert("Candidato cadastrado com sucesso")
           this.toastService.success("Candidato cadastrado com sucesso")
           this.router.navigate(['/login']);
         },
         error: (e:HttpErrorResponse) => {
-          // Lidar com o erro
-          alert(e.error.message)
-          this.toastService.success(e.error.message)
+          this.toastService.error(e.error.message)
         }
       });
   }

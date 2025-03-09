@@ -10,6 +10,7 @@ import { canActivateGuard } from './guards/can-activate.guard';
 import { FormCurriculoComponent } from "./portal-vg/form-curriculo/form-curriculo.component";
 import { EmpPerfilComponent } from "./login/perfis/emp-perfil/emp-perfil.component";
 import { CandPerfilComponent } from "./login/perfis/cand-perfil/cand-perfil.component";
+import { authEmpresaGuard } from './guards/auth-empresa.guard';
 
 
 
@@ -22,7 +23,11 @@ export const routes: Routes = [
     component: VagasComponent,
     canActivate: [canActivateGuard],
   },
-  { path: 'emp', component: ContratacaoComponent },
+  {
+    path: 'empresa',
+    component: ContratacaoComponent,
+    canActivate: [authEmpresaGuard],
+  },
   { path: 'edit-perfil', component: EditPerfilComponent },
   { path: 'curriculo', component: FormCurriculoComponent },
   { path: 'emp-perfil', component: EmpPerfilComponent },

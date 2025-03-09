@@ -1,0 +1,89 @@
+<div class="absolute h-[100%] w-[100%] bg-gray-100 left-0 top-0 flex items-center justify-center">
+
+  <div class=" border rounded-lg bg-white flex flex-col gap-5  pl-5  shadow-2xl w-5/12 p-5 h-[32rem] justify-between">
+
+    @if (vaga) {
+    <div>
+
+      <div class="flex flex-row pt-5">
+        <div class="flex items-center  w-[40%]">
+          <h2 class="text-blue-700 font-medium font-sans text-lg">{{vaga.vagTxTitulo}}</h2>
+          <p class="bg-green-100 text-xs text-center font-sans px-2 py-1 ml-4 my-1 ">Nova</p>
+        </div>
+        <!--so vai aparecer se a vaga tiver ate um mes de postada-->
+        <div class="flex justify-center flex-col   w-[60%] items-end">
+          <h2 class="text-green-600 text-base font-medium w-52 ">{{vaga.vagNrQuantidade}} @if
+            (vaga.vagNrQuantidade>1) {Vagas}@else {Vaga}</h2>
+          <h2 class="text-green-600 text-base font-medium w-52 ">{{vaga.vagNrQuantidadeInscritos}} @if
+            (vaga.vagNrQuantidadeInscritos) {Inscritos}@else {Inscrito}</h2>
+        </div>
+      </div>
+      <div class="flex flex-col gap-3">
+
+        <div class="flex">
+          <p class=" h-4 pr-2 text-gray-500 text-sm border-r border-gray-400 ">{{vaga.empTxNome}}</p>
+          <p class=" h-4 px-2 text-gray-500 text-sm border-r border-gray-400 ">{{vaga.cidTxNome}}</p>
+          <p class=" h-4 px-2 text-gray-500 text-sm  ">{{vaga.empTxNumero}} </p>
+        </div>
+
+        <div class="flex">
+          <p class=" h-4 pr-2 text-gray-500 text-sm border-r border-gray-400 ">Telefone</p>
+          <p class=" h-4 px-2 text-gray-500 text-sm border-r border-gray-400 ">email</p>
+          <p class=" h-4 px-2 text-gray-500 text-sm  ">Logradouro </p>
+        </div>
+      </div>
+      <div class="flex flex-row my-2 ">
+        <!--criar um componete-->
+        <p class="bg-gray-200 text-sm w-fit px-2 p-1 rounded-md mr-2 ">{{vaga.vagTxFormacao}}</p>
+      </div>
+      <div>
+        <p class="font-sans text-gray-500">
+          Postada em: {{ vaga.vagDtCriacao | date:'EEEE, MMM, yyyy' : 'pt-BR' }}
+        </p>
+
+        <p class="font-sans text-gray-500">
+          Expira em {{ vaga.vagDtCriacao| diferenday:vaga.vagDtLimite }} Dias!
+        </p>
+      </div>
+
+      <div class="mt-5">
+        <ol class="flex gap-5">
+          <li class="h-4  text-sm">• {{vaga.vagTxTipo}}</li>
+          <li class="h-4 text-sm">• {{vaga.vagTxModalidade}}</li>
+          <li class="h-4 text-sm">• {{vaga.vagTxExperiencia}}</li>
+        </ol>
+
+      </div>
+    </div>
+
+    <div>
+      <p>
+
+      <p class="font-sans text-gray-500">
+        {{vaga.vagTxDescricao}}
+      </p>
+    </div>
+
+
+    <div class="flex items-center justify-end gap-5 ">
+
+      <button class="bg-gradient-to-br from-gray-400 to-blue-500 text-white text-base rounded-xl w-40 h-10 p-1"
+        (click)="handleBack()">
+        Voltar
+      </button>
+
+      <button class="bg-tema-gradient text-white text-base rounded-xl w-40 h-10  p-1" (click)="handleConfirm()">
+        Confirmar</button>
+    </div>
+    }
+  </div>
+
+  @if (isLoad) {
+  <app-load />
+  }
+</div>
+
+
+<!-- <div class="absolute h-[100%] w-[100%] left-0 top-0">
+
+</div> -->
