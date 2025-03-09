@@ -1,20 +1,55 @@
-<div class="w-full border rounded-lg hover:bg-gray-50 flex flex-col h-fit pl-5 ">
+<div class="w-full border rounded-lg hover:bg-gray-50 flex flex-col ga5 h-fit pl-5 shadow-md ">
   <div class="flex flex-row  pt-5">
-    <h2 class="text-blue-700 font-medium font-sans text-lg ">{{cargo}}</h2>
-    <p class="bg-green-100 text-xs text-center font-sans px-2 py-1 ml-4 my-1 ">Nova</p> <!--so vai aparecer se a vaga tiver ate um mes de postada-->
-    <h2 class="text-green-600 text-base font-medium  flex mx-auto mr-10  h-8 ">{{tipoVaga}}</h2>
+    <h2 class="text-blue-700 font-medium font-sans text-lg ">{{vaga.vagTxTitulo}}</h2>
+    <p class="bg-green-100 text-xs text-center font-sans px-2 py-1 ml-4 my-1 ">Nova</p>
+    <!--so vai aparecer se a vaga tiver ate um mes de postada-->
+    <h2 class="text-green-600 text-base font-medium  flex mx-auto mr-10  h-8 ">{{vaga.vagNrQuantidade}} @if
+      (vaga.vagNrQuantidade>1) {Vagas}@else {Vaga}</h2>
   </div>
   <div class="flex flex-row ">
-    <p class=" h-4 pr-2 text-gray-500 text-sm border-r border-gray-400 ">{{empresa}}</p>
-    <p class=" h-4 px-2 text-gray-500 text-sm border-r border-gray-400 ">{{vagaLocacao}}</p>
-    <p class=" h-4 px-2 text-gray-500 text-sm  ">{{horasTrabalho}} </p>
+    <p class=" h-4 pr-2 text-gray-500 text-sm border-r border-gray-400 ">{{vaga.empTxNome}}</p>
+    <p class=" h-4 px-2 text-gray-500 text-sm border-r border-gray-400 ">{{vaga.cidTxNome}}</p>
+    <p class=" h-4 px-2 text-gray-500 text-sm  ">{{vaga.empTxNumero}} </p>
   </div>
   <div class="flex flex-row my-2 ">
     <!--criar um componete-->
-    <p class="bg-gray-200 text-sm w-fit px-2 p-1 rounded-md mr-2 ">{{tecnologia}}</p>
+    <p class="bg-gray-200 text-sm w-fit px-2 p-1 rounded-md mr-2 ">{{vaga.vagTxFormacao}}</p>
   </div>
-  <div class="mr-10"><p class="font-sans text-gray-500">{{vagaDescricao}}</p>
-  </div>
-  <button class="bg-tema-gradient rounded-xl text-white w-fit h-10 p-1 px-3 mx-auto mr-10 my-4 ">Candidate-se</button>
+  <div class="mr-10">
+    @if (vaga.vagDtCriacao>vaga.vagDtLimite) {
+    <p class="font-sans text-gray-500">
+      Postada em {{vaga.vagDtCriacao | date:'dd'}}, {{ vaga.vagDtCriacao | date:'EEEE, MMMM, yyyy' : 'pt-BR' }}
+    </p>
+    }@else {
+    <p class="font-sans text-gray-500">
+      Postada em: {{ vaga.vagDtCriacao | date:'EEEE, MMM, yyyy' : 'pt-BR' }}
+    </p>
 
+    <p class="font-sans text-gray-500">
+      Expira em {{vaga.vagDtLimite | date:'dd'}}, {{ vaga.vagDtCriacao| diferenday:vaga.vagDtLimite }} Dias!
+    </p>
+    }
+  </div>
+
+  <div class="w-full flex justify-center items-center">
+    <ol class="flex gap-5 list-inside">
+      <li class="h-4 px-2  text-sm">• {{vaga.vagTxTipo}}</li>
+      <li class="h-4 px-2 text-sm">• {{vaga.vagTxModalidade}}</li>
+      <li class="h-4 px-2 text-sm">• {{vaga.vagTxExperiencia}}</li>
+    </ol>
+    <button [ngClass]="{
+      'rounded-xl text-white w-fit h-10 p-1 px-3 mx-auto mr-10 my-4':true,
+      'bg-gray-300': vaga.vagDtCriacao>vaga.vagDtLimite || vaga.vagBlInscrito,
+      'bg-tema-gradient':  vaga.vagDtCriacao<vaga.vagDtLimite && !vaga.vagBlInscrito
+    }" [disabled]="vaga.vagDtCriacao>vaga.vagDtLimite || vaga.vagBlInscrito" (click)="onChangeVaga()">
+      @if (vaga.vagDtCriacao>vaga.vagDtLimite) {
+      Expirada
+      }@else if(vaga.vagBlInscrito) {
+      Inscrito
+      }@else {
+      Candidate-se
+      }
+
+    </button>
+  </div>
 </div>

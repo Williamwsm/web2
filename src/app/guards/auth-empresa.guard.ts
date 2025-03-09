@@ -7,18 +7,18 @@ interface DecodedToken extends JwtPayload {
   role: string;
 }
 
+export const authEmpresaGuard: CanActivateFn = (route, state) => {
+  const authService = inject(AuthenticationService)
+  const token: string | null = authService.getAcessToken();
 
-export const canActivateGuard: CanActivateFn = (route, state) => {
-  const authService=inject(AuthenticationService)
-    const token: string | null = authService.getAcessToken();
+  if (token) {
 
-    if (token) {
-
-      const decode: DecodedToken = jwtDecode(token);
-      if (decode.role != 'Usuario') {
-        return false;
-      }
-      return true}else{
+    const decode: DecodedToken = jwtDecode(token);
+    if (decode.role != 'Administrador') {
+      return false;
+    }
+    return true
+  } else {
     return inject(Router).createUrlTree(["/login"])
   }
 };

@@ -1,34 +1,61 @@
 <div class="bg-white flex flex-col shadow border w-64 h-fit  ml-48 mt-8 p-4 rounded-lg">
-  <h1 class="font-sans  font-bold">Filtros Avançados</h1>
+  <h1 class="font-sans  font-bold">Filtros</h1>
   <label class="font-sans font-semibold text-sm mt-4 mb-4">Tipo de Vaga</label>
-  <select class="font-sans w-full h-10 pl-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-800">
-      <option >Todas</option>
-      <option>Voluntario</option>
-      <option >Estagiario</option>
-      <option>Freelance</option></select>
+  <select class="font-sans w-full h-10 pl-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-800" (change)="onTipoVagaChange()" [(ngModel)]="tipoVagaSelecionado">
+    <option selected disabled [value]="undefined">Todas</option>
+    @for (item of tiposVagas; track $index) {
+      <option [value]="item">{{item}}</option>
+    }
+  </select>
   <label class="font-sans font-semibold text-sm mt-4 mb-4 ">Localização</label>
-  <input class="placeholder:text-gray-400 text-sm rounded-lg border focus:outline-none focus:ring-2 focus: ring-green-800 pl-2 h-10 w-full " type="text" placeholder="Cidade ou país">
+
+  <div class="flex flex-col gap-3">
+    <select [(ngModel)]="estadoSelecionado" (change)="onEstadoChange()" class="font-sans w-full h-10 pl-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-800">
+      <option disabled selected [value]="null">Estado</option>
+      @for (item of estados; track $index) {
+        <option [value]="item.estNrId">{{item.estTxNome}}</option>
+      }
+    </select>
+
+    <select
+    [ngClass]="{
+      'font-sans w-full h-10 pl-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-800':true,
+      'bg-gray-300': estadoSelecionado == null || quantidadeVagas == 0
+    }"
+    [disabled]="estadoSelecionado == null || quantidadeVagas == 0"
+    [(ngModel)]="cidadesSelecionada" (change)="onCidadeChange()" >
+      <option disabled selected [value]="null">Cidades</option>
+      @for (item of cidades; track $index) {
+        <option [value]="item.cidNrId">{{item.cidTxNome}}</option>t
+      }
+    </select>
+  </div>
+
   <label class="font-sans font-semibold text-sm mt-4">Preferência de Vaga</label>
 
   <div class="flex flex-col mt-2 space-y-2">
     <label class="font-sans">
-      <input class="mr-2" type="checkbox">Remoto
+      <input class="mr-2" type="checkbox" [value]="isRemoto" (click)="handleRemoto()">Remoto
     </label>
     <label class="font-sans">
-       <input class="mr-2" type="checkbox">Híbrido
-      </label>
+      <input class="mr-2" type="checkbox" [value]="isHibrido" (click)="handleHibrido()">Híbrido
+    </label>
     <label class="font-sans">
-       <input class="mr-2" type="checkbox">Presencial
-      </label>
+      <input class="mr-2" type="checkbox" [value]="isPresencial" (click)="handlePresencial()">Presencial
+    </label>
   </div>
 
   <label class="font-sans font-semibold text-sm mt-4">Nível de Experiência </label>
   <div class="flex flex-col space-y-2 mt-2 ">
-    <label class="font-sans">
-      <input class="mr-2" type="radio" name="nivel" value="Iniciante">Iniciante</label>
-    <label class="font-sans">
-      <input class="mr-2" type="radio" name="nivel" value="Intermediario">Intermediário</label>
-    <label class="font-sans">
-      <input class="mr-2" type="radio" name="nivel" value="Avançado">Avançado</label>
+    @for (item of experiencias; track $index) {
+      <label class="font-sans">
+        <input
+        class="mr-2"
+        type="radio"
+        name="nivel"
+        [checked]="selectedExperiencia === item"
+        (click)="onExperienciaChange(item)">{{item}}
+      </label>
+    }
   </div>
- </div>
+</div>

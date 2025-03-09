@@ -10,6 +10,7 @@ import { Login } from '../../model/login';
 
 interface DecodedToken extends JwtPayload {
   sub: string;
+  role: string;
 }
 
 @Injectable({
@@ -18,68 +19,57 @@ interface DecodedToken extends JwtPayload {
 
 export class AuthenticationService {
 
-  private user:string | null=null
 
-  private router:Router = inject(Router);
-  private apiService:ApiService = inject(ApiService);
-  private toastService:ToastrService = inject(ToastrService)
+  private router: Router = inject(Router);
+  private apiService: ApiService = inject(ApiService);
+  private toastService: ToastrService = inject(ToastrService)
 
-  private localStorageService:LocalStorageService = inject(LocalStorageService)
+  private localStorageService: LocalStorageService = inject(LocalStorageService)
 
 
-  setUser(user:string):void{
-    this.localStorageService.setItemForLocalStorage("user", JSON.stringify(user))
-  }
+  setAcessToken(acessToken: string): void {
 
-  getUser():string | null{
-
-    const user:string | null=localStorage.getItem("user");
-
-    if(user){
-      this.user=JSON.parse(user);
-    }else{
-      this.user=null;
-    }
-
-    return this.user;
-
-  }
-
-  setAcessToken(acessToken:string):void{
-
-    const decode:DecodedToken=jwtDecode(acessToken);
-
-    console.log(decode)
-
-    this.setUser(decode.sub)
+    const decode: DecodedToken = jwtDecode(acessToken);
 
     this.localStorageService.setItemForLocalStorage("acessToken", acessToken)
 
 
   }
-  getAcessToken():string|null{
-    const token:string|null=this.localStorageService.getItemForLocalStorage("acessToken")
-    return token ;
+  getAcessToken(): string | null {
+    const token: string | null = this.localStorageService.getItemForLocalStorage("acessToken")
+    return token;
   }
 
 
-  login(userLogin:Login):void{
+  login(userLogin: Login): void {
     this.apiService.login(userLogin).subscribe({
-      next:(value)=>{
+      next: (value) => {
 
         this.setAcessToken(value.data);
-        this.navigateToVagas()
+        const decode: DecodedToken = jwtDecode(value.data);
+
+        if (decode.role == 'Usuario') {
+          this.navigateToVagas()
+        } else if (decode.role == 'Administrador') {
+          this.navigateToEmpresa();
+        } else {
+          this.toastService.error("Não foi possível reconhecer perfil")
+        }
 
       },
-      error:(e:HttpErrorResponse)=>{
+      error: (e: HttpErrorResponse) => {
         console.log(e);
         this.toastService.error(e.error.message)
       }
     })
   }
 
-  navigateToVagas():void{
+  navigateToVagas(): void {
     this.router.navigate(['/vagas'])
+  }
+
+  navigateToEmpresa(): void {
+    this.router.navigate(['/empresa'])
   }
 
 }

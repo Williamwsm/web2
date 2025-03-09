@@ -1,4 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
+import { ApiService } from '../../../servicos/api.service';
+import { Vaga } from '../../../model/vaga';
 
 @Component({
   selector: 'app-suas-cadidaturas',
@@ -9,9 +11,9 @@ import { Component, Input } from '@angular/core';
 })
 export class SuasCadidaturasComponent {
   @Input() status:'Analise'|'Aprovado'= 'Analise';
-  @Input() cargo: string = '';
-  @Input() empresa: string ='';
-  @Input() dataCandidatura:string='';
+
+  @Input() vaga : Vaga | null = null;
+  apiService:ApiService = inject(ApiService);
 
   getStatus(){
     return{
