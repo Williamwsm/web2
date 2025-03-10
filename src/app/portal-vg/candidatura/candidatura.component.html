@@ -36,29 +36,39 @@
       <!--colocar em uma pasta pra poder personalizar-->
       <div class="flex flex-col gap-3">
         @if (vagasCandidato) {
-          @if (vagasCandidato.length>0) {
-            @for (item of vagasCandidato; track $index) {
-              <app-suas-cadidaturas [vaga]="item" ></app-suas-cadidaturas>
-            }
-          }@else {
-            <h2 class="font-medium">Você não possui nenhuma candidatura ativa</h2>
-          }
+        @if (vagasCandidato.length>0) {
+        @for (item of vagasCandidato; track $index) {
+        <app-suas-cadidaturas [vaga]="item"></app-suas-cadidaturas>
+        }
+        }@else {
+        <h2 class="font-medium">Você não possui nenhuma candidatura ativa</h2>
+        }
         }
       </div>
     </div>
 
-    <div class="bg-white shadow border rounded-lg w-96 h-48 ml-8 p-4 ">
+    <div class=" shadow border rounded-lg w-96 h-48 ml-8 p-4 bg-white">
       <h1 class="font-sans font-semibold text-xl">Seu Currículo</h1>
-      <p class="font-sans text-sm font-medium mt-5">Link do Currículo</p>
-      <div class="flex flex-col mt-2 ">
-        <input class="text-sm text-gray-500 border-gray-500 border  rounded-xl h-8 pl-2" type="url">
-        <button class="bg-tema-gradient text-white text-base rounded-xl w-40 h-10 ml-48 my-4 p-1 mr-4">Cadastrar
-          currículo</button>
+      <div class="flex flex-col justify-end items-end  h-full">
+        @if (curNrId === "") {
+        <button class="bg-tema-gradient text-white text-base rounded-xl w-40 h-10 mb-5 " [routerLink]="['/curriculo']"
+          routerLinkActive="router-link-active">
+          Cadastrar
+          currículo
+        </button>
+        }@else{
+        <button class="bg-tema-gradient text-white text-base rounded-xl w-40 h-10 mb-5 "
+          [routerLink]="['/curriculo', curNrId]" routerLinkActive="router-link-active">
+          Atualizar
+          currículo
+        </button>
+        }
+
       </div>
     </div>
   </div>
 
   @if (vaga) {
-  <app-confirmar-vaga  [vaga]="vaga" (vagaChange)="onChangeVaga($event)"/>
+  <app-confirmar-vaga [vaga]="vaga" (vagaChange)="onChangeVaga($event)" />
   }
 </div>

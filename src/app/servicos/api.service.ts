@@ -76,7 +76,7 @@ export class ApiService {
   }
 
   buscarCurriculo(curNrId: number): Observable<ResponseApi<Curriculo>> {
-    return this.http.get<ResponseApi<Curriculo>>(`${this.urlApi}/curriculos/${curNrId}`);
+    return this.http.get<ResponseApi<Curriculo>>(`${this.urlApi}/candidatos/curriculos/${curNrId}`);
   }
 
 }

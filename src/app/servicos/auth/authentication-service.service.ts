@@ -1,4 +1,4 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable, OnInit, inject } from '@angular/core';
 import { JwtPayload, jwtDecode } from 'jwt-decode';
 import { log } from 'console';
 import { Router } from '@angular/router';
@@ -11,6 +11,7 @@ import { Login } from '../../model/login';
 interface DecodedToken extends JwtPayload {
   sub: string;
   role: string;
+  curNrId:string
 }
 
 @Injectable({
@@ -40,6 +41,14 @@ export class AuthenticationService {
     return token;
   }
 
+  setCurNrId(curNrId:string){
+        this.localStorageService.setItemForLocalStorage("curNrId", curNrId);
+  }
+
+  getCurNrId() : string | null{
+    return this.localStorageService.getItemForLocalStorage("curNrId");
+}
+
 
   login(userLogin: Login): void {
     this.apiService.login(userLogin).subscribe({
@@ -47,6 +56,8 @@ export class AuthenticationService {
 
         this.setAcessToken(value.data);
         const decode: DecodedToken = jwtDecode(value.data);
+
+       this.setCurNrId(decode.curNrId);
 
         if (decode.role == 'Usuario') {
           this.navigateToVagas()
