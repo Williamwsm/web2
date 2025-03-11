@@ -2,51 +2,49 @@
   class="bg-white shadow rounded-lg border w-full h-fit flex flex-col p-4"
 >
   <h1 class="font-sans font-bold text-xl">Publicar nova vaga</h1>
-  <form>
+  <form [formGroup]="meuFormulario" (ngSubmit)="submit()">
     <p class="mt-4 mb-2 font-sans text-sm">Título da vaga</p>
     <input
       class="text-sm py-1 border-gray-200 border-2 rounded-lg w-full pl-2"
       type="text"
-      [(ngModel)]="titulo"
       name="titulo"
       maxlength="75"
+      formControlName="VagTxTitulo"
     />
-    <p class="text-sm text-gray-500 font-sans pl-2">{{titulo.length}}/75</p>
 
     <p class="my-2 font-sans text-sm">Descrição</p>
     <input
       class="text-sm py-1 pl-2 border-2 border-gray-200 rounded-lg w-full h-20"
       type="text"
-      [(ngModel)]="descricao"
       name="descricao"
       maxlength="800"
-
+      formControlName="VagTxDescricao"
     />
-    <p class="text-sm text-gray-500 font-sans pl-2">{{descricao.length}}/800</p>
 
-    <div class="flex flex-row">
-      <div class="flex flex-col w-1/2 mr-3">
-        <p class="my-2 font-sans text-sm">Localização</p>
-        <input
-          class="text-sm py-1 pl-2 border-2 border-gray-200 rounded-lg w-full"
-          type="text"
-          [(ngModel)]="localizacao"
-          name="localizacao"
-          maxlength="50"
-        />
-        <p class="text-sm text-gray-500 font-sans pl-2">{{localizacao.length}}/50</p>
-      </div>
-
+    <div class="flex flex-row gap-3">
       <div class="flex flex-col w-1/2">
         <p class="my-2 font-sans text-sm">Tipo de Contrato</p>
         <select
           class="text-sm py-1 pl-2 border-2 border-gray-200 rounded-lg w-full"
-          type="text"
+          formControlName="vagTxTipo"
         >
-          <option value="Todas">Todas</option>
-          <option value="Voluntário">Voluntário</option>
-          <option value="Estagio">Estágio</option>
-          <option value="Freelance">Freelance</option>
+          <option [value]="" selected disabled>Todas</option>
+          @for (item of tipoVagas; track $index) {
+            <option [value]="item">{{ item }}</option>
+          }
+        </select>
+      </div>
+
+      <div class="flex flex-col w-1/2">
+        <p class="my-2 font-sans text-sm">Modalidade</p>
+        <select
+          class="text-sm py-1 pl-2 border-2 border-gray-200 rounded-lg w-full"
+          formControlName="VagTxModalidade"
+        >
+          <option [value]="" selected disabled>Todas</option>
+          @for (item of modalidades; track $index) {
+            <option [value]="item">{{ item }}</option>
+          }
         </select>
       </div>
     </div>
@@ -55,74 +53,96 @@
     <input
       class="text-sm py-1 pl-2 border-2 border-gray-200 rounded-lg w-full h-20"
       type="text"
-      [(ngModel)]="requisitos"
       name="requisitos"
       maxlength="600"
+      formControlName="VagTxRequisitos"
     />
-    <p class="text-sm text-gray-500 font-sans pl-2">{{requisitos.length}}/600</p>
-    <p class="my-2 font-sans text-sm">Benefícios</p>
-    <input
-      class="text-sm py-1 pl-2 border-2 border-gray-200 rounded-lg w-full h-20"
-      type="text"
-      [(ngModel)]="beneficios"
-      name="beneficios"
-      maxlength="600"
-    />
-    <p class="text-sm text-gray-500 font-sans pl-2">{{beneficios.length}}/600</p>
+
     <div class="flex flex-row">
       <div class="flex-col w-1/2 mr-2">
         <p class="my-2 font-sans text-sm">Nível de Ensino</p>
-        <input
+        <select
           class="text-sm py-1 pl-2 border-2 border-gray-200 rounded-lg w-full"
-          type="text"
-          [(ngModel)]="nEnsino"
-          name="nEnsino"
-          maxlength="40"
-        />
-        <p class="text-sm text-gray-500 font-sans pl-2">{{nEnsino.length}}/40</p>
+          formControlName="VagTxFormacao"
+        >
+          <option [value]="" selected disabled>Todas</option>
+          @for (item of niveisEnsino; track $index) {
+            <option [value]="item">{{ item }}</option>
+          }
+        </select>
       </div>
       <div class="flex-col w-1/2 mr-2">
-        <p class="my-2 font-sans text-sm">Formação</p>
-        <input
+        <p class="my-2 font-sans text-sm">Experiência</p>
+        <select
           class="text-sm py-1 pl-2 border-2 border-gray-200 rounded-lg w-full"
-          type="text"
-          [(ngModel)]="formacao"
-          name="formacao"
-          maxlength="50"
-        />
-        <p class="text-sm font-sans text-gray-500 pl-2">{{formacao.length}}/50</p>
+          formControlName="vagTxExperiencia"
+        >
+          <option [value]="" selected disabled>Todas</option>
+          @for (item of niveisExPeriencia; track $index) {
+            <option [value]="item">{{ item }}</option>
+          }
+        </select>
       </div>
     </div>
 
     <div class="flex flex-row space-x-2">
       <div class="flex-col w-1/3">
-        <p class="my-2 font-sans text-sm ">Número de vagas</p>
+        <p class="my-2 font-sans text-sm">Número de vagas</p>
         <input
           class="text-sm py-1 pl-2 border-2 border-gray-200 rounded-lg w-full"
           type="number"
           min="1"
+          formControlName="VagNrQuantidade"
         />
       </div>
       <div class="flex-col w-1/3">
-        <p class="my-2 font-sans text-sm ">Carga horária</p>
+        <p class="my-2 font-sans text-sm">Carga horária</p>
         <input
           class="text-sm py-1 pl-2 border-2 border-gray-200 rounded-lg w-full"
           type="number"
           min="4"
+          formControlName="VagNrCargaHorariaSemanal"
         />
       </div>
       <div class="flex flex-col w-1/3">
-        <p class="font-sans text-sm my-2 ">Encerramento da Contratação</p>
-        <input class="text-sm border-2 pl-2 py-1 border-gray-200 rounded-lg w-full" type="date">
+        <p class="font-sans text-sm my-2">Encerramento da Contratação</p>
+        <input
+          class="text-sm border-2 pl-2 py-1 border-gray-200 rounded-lg w-full"
+          type="date"
+          formControlName="VagaDtLimite"
+          [min]="minDate"
+          [max]="maxDate"
+        />
       </div>
     </div>
+    <div class="flex flex-row mt-4 ml-auto">
+      <button class="text-red-700 mr-10 p-2">Cancelar</button>
+      <button class="bg-tema-gradient text-white text-sm font-sans font-semibold rounded-xl p-2"
+      [ngClass]="{
+        'rounded-xl flex mx-auto mr-4 text-white font-sans text-sm   px-4 py-2': true,
+        'bg-gray-300': !meuFormulario.valid, 'bg-tema-gradient':meuFormulario.valid
+      }"
+       [disabled] = "!meuFormulario.valid"
+      >
+        Publicar Vaga
+      </button>
+    </div>
   </form>
-  <div class="flex flex-row mt-4 ml-auto">
-    <button class="text-red-700 mr-10 p-2">Cancelar</button>
-    <button
-      class="bg-tema-gradient text-white text-sm font-sans font-semibold rounded-xl p-2"
-    >
-      Publicar Vaga
-    </button>
-  </div>
+<!-- 
+  <p>{{meuFormulario.get("VagTxModalidade")?.valid}}</p>
+  <p>{{meuFormulario.get("vagTxTipo")?.valid}}</p>
+  <p>{{meuFormulario.get("vagTxExperiencia")?.valid}}</p>
+  <p>{{meuFormulario.get("VagTxTitulo")?.valid}}</p>
+  <p>{{meuFormulario.get("VagTxFormacao")?.valid}}</p>
+  <p>{{meuFormulario.get("VagTxDescricao")?.valid}}</p>
+  <p>{{meuFormulario.get("VagTxRequisitos")?.valid}}</p>
+  <p>{{meuFormulario.get("VagNrCargaHorariaSemanal")?.valid}} pppp</p>
+  <p>{{meuFormulario.get("VagaDtLimite")?.valid}}</p>
+  <p>{{meuFormulario.get("VagNrQuantidade")?.valid}}</p> -->
+
+@if (isload) {
+  <app-load/>
+}
+
+
 </Section>

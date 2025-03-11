@@ -11,6 +11,8 @@ import { FormCurriculoComponent } from "./portal-vg/form-curriculo/form-curricul
 import { EmpPerfilComponent } from "./login/perfis/emp-perfil/emp-perfil.component";
 import { CandPerfilComponent } from "./login/perfis/cand-perfil/cand-perfil.component";
 import { authEmpresaGuard } from './guards/auth-empresa.guard';
+import { AddVagaComponent } from './emp-vg/cards/conteudo/add-vaga/add-vaga.component';
+import { MinhasVagasComponent } from './emp-vg/cards/conteudo/minhas-vagas/minhas-vagas.component';
 
 
 
@@ -27,6 +29,20 @@ export const routes: Routes = [
     path: 'empresa',
     component: ContratacaoComponent,
     canActivate: [authEmpresaGuard],
+    children:[
+      {
+        path:'vaga',
+        component:AddVagaComponent
+      },
+      {
+        path:'vaga/:vagNrId',
+        component:AddVagaComponent
+      },
+      {
+        path:'minhas-vagas',
+        component:MinhasVagasComponent
+      }
+    ],
   },
   { path: 'edit-perfil', component: EditPerfilComponent },
   { path: 'curriculo/:curNrId', component: FormCurriculoComponent },

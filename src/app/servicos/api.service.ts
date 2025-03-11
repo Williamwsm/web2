@@ -96,4 +96,13 @@ export class ApiService {
     return this.http.get<ResponseApi<Curriculo>>(`${this.urlApi}/candidatos/curriculos/${curNrId}`);
   }
 
+  buscarVagasDaEmpresa(): Observable<ResponseApi<Vaga[]>> {
+    return this.http.get<ResponseApi<Vaga[]>>(`${this.urlApi}/vagas/empresas`);
+  }
+
+  buscarVagaDaEmpresa(vagNrId:number): Observable<ResponseApi<Vaga>> {
+    return this.http.get<ResponseApi<Vaga>>(`${this.urlApi}/vagas/${vagNrId}`);
+  }
+
+
 }

@@ -4,32 +4,19 @@
   <div class="bg-white flex
   flex-col shadow border rounded-lg w-80 h-fit mr-8 p-4">
 
-      <div class="  space-y-2" >
-          <button class="font-sans font-semibold hover:bg-blue-50 rounded-lg p-3 w-full mr-auto flex "
-          (click)="selecionarFuncao('minhasVagas')" >Minhas vagas</button>
+    <div class="  space-y-2">
+      <button class="font-sans font-semibold hover:bg-blue-50 rounded-lg p-3 w-full mr-auto flex "
+      [routerLink]="['minhas-vagas']" >Minhas vagas</button>
 
-          <button class="font-sans font-semibold hover:bg-blue-50 rounded-lg p-3 w-full mr-auto flex"
-          (click)="selecionarFuncao('candidaturas')">Candidaturas</button>
+      <!-- <button class="font-sans font-semibold hover:bg-blue-50 rounded-lg p-3 w-full mr-auto flex"
+        (click)="selecionarFuncao('candidaturas')">Candidaturas</button> -->
 
-          <button class="font-sans font-semibold hover:bg-blue-50 rounded-lg p-3 w-full mr-auto flex "
-          (click)="selecionarFuncao('buscarCandidato')">Buscar Candidatos</button>
+      <button class="font-sans font-semibold hover:bg-blue-50 rounded-lg p-3 w-full mr-auto flex"
+       [routerLink]="['vaga']" >Adicionar Vaga</button>
 
-          <button class="font-sans font-semibold hover:bg-blue-50 rounded-lg p-3 w-full mr-auto flex"
-          (click)="selecionarFuncao('addVaga')">Adicinar Vaga</button>
-
-      </div>
+    </div>
   </div>
-  <div class="bg-transparent w-2/3 h-fit flex flex-col space-y-3 ">
-  @if (funcaoEmp ==='minhasVagas' ) {
-    <app-minhas-vagas></app-minhas-vagas>
-
-  }@else if (funcaoEmp=== 'candidaturas') {
-    <app-candidaturas></app-candidaturas>
-
-  }@else if (funcaoEmp ==='buscarCandidato') {
-    <app-buscar-cand></app-buscar-cand>
-  }@else {
-  <app-add-vaga></app-add-vaga>
-}
+  <div class="bg-transparent w-2/3 h-[80vh] flex flex-col space-y-3 overflow-y-scroll">
+    <router-outlet/>
   </div>
 </div>
