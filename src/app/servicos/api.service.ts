@@ -28,12 +28,29 @@ export class ApiService {
     return this.http.post<void>(`${this.urlApi}/candidatos/cadastrar`, form );
   }
 
-  empresa(form: Empresa ) {
-    return this.http.post(`${this.urlApi}/empresas/cadastrar`, form );
+  //novos métodos adicionados, cadastrarEmpresa, atualizarEmpresa, cadastrarVaga, atualizarVaga
+
+  cadastrarEmpresa(form: Empresa): Observable<void> {
+    return this.http.post<void>(`${this.urlApi}/empresas/cadastrar`, form);
   }
 
-  vaga(form: Vaga ) {
-    return this.http.post(`${this.urlApi}/empresas/vagas/cadastrar`, form );
+  atualizarEmpresa(empNrId: number, form: Empresa): Observable<void> {
+    return this.http.put<void>(`${this.urlApi}/empresas/atualizar/${empNrId}`, form);
+  }
+
+  //buscarEmpresa não tem no back
+  buscarEmpresa(empNrId: number): Observable<ResponseApi<Empresa>>{
+    return this.http.get<ResponseApi<Empresa>>(`${this.urlApi}/empresas/${empNrId}`);
+  }
+
+  //novos métodos adicionados, cadastrarVaga, atualizarVaga
+
+  cadastrarVaga(form: Vaga): Observable<void> {
+    return this.http.post<void>(`${this.urlApi}/empresas/vagas/cadastrar`, form);
+  }
+
+  atualizarVaga(vagNrId: number, form: Vaga): Observable<void> {
+    return this.http.put<void>(`${this.urlApi}/empresas/vagas/atualizar/${vagNrId}`, form);
   }
 
   buscarEnderecoPorCep(cep:string):Observable<ResponseApi<Endereco>>{
