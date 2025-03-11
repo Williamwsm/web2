@@ -3,6 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { ambiente } from '../../ambientes/ambiente';
 import { Login } from '../model/login';
 import { Candidato } from '../model/candidato';
+import { Curriculo } from '../model/curriculo';
 import { Empresa } from '../model/empresa';
 import { Vaga } from '../model/vaga';
 import { Observable } from 'rxjs';
@@ -71,4 +72,17 @@ export class ApiService {
   buscarVagasDoCandidato():Observable<ResponseApi<Vaga[]>>{
     return this.http.get<ResponseApi<Vaga[]>>(`${this.urlApi}/candidatos/vagas`);
   }
+
+  cadastrarCurriculo(form: Curriculo): Observable<void> {
+    return this.http.post<void>(`${this.urlApi}/candidatos/curriculos/cadastrar`, form);
+  }
+
+  atualizarCurriculo(curNrId: number, form: Curriculo): Observable<void> {
+    return this.http.put<void>(`${this.urlApi}/candidatos/curriculos/atualizar/${curNrId}`, form);
+  }
+
+  buscarCurriculo(curNrId: number): Observable<ResponseApi<Curriculo>> {
+    return this.http.get<ResponseApi<Curriculo>>(`${this.urlApi}/candidatos/curriculos/${curNrId}`);
+  }
+
 }

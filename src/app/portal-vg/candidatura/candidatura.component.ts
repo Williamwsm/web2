@@ -13,11 +13,13 @@ import { ExperienciaEnum, TipoVagaEnum } from '../../model/enuns/vaga';
 import { ConfirmarVagaComponent } from '../../components/confirmar-vaga/confirmar-vaga.component';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { error } from 'console';
+import { Router, RouterLink } from '@angular/router';
+import { AuthenticationService } from '../../servicos/auth/authentication-service.service';
 
 @Component({
   selector: 'app-candidatura',
   standalone: true,
-  imports: [FiltrosComponent, CardVagasComponent, SuasCadidaturasComponent, EmptyComponent, ConfirmarVagaComponent],
+  imports: [FiltrosComponent, CardVagasComponent, SuasCadidaturasComponent, EmptyComponent, ConfirmarVagaComponent, RouterLink],
   templateUrl: './candidatura.component.html',
   styleUrl: './candidatura.component.css'
 })
@@ -27,6 +29,7 @@ export class CandidaturaComponent implements OnInit {
   protected vagas: Vaga[] | null = []
   protected toast: ToastrService = inject(ToastrService)
   protected estados!: Estado[];
+  protected auth:AuthenticationService = inject(AuthenticationService);
 
   protected isHibrido: boolean = false;
   protected isRemoto: boolean = false;
@@ -38,10 +41,12 @@ export class CandidaturaComponent implements OnInit {
   protected isExibirConfirmacao: boolean = false;
   protected vaga: Vaga | null = null;
   protected vagasCandidato: Vaga[] | null = null
+  curNrId:string = "";
 
   ngOnInit(): void {
     this.findVagas();
     this.findEstados();
+    this.curNrId = this.auth.getCurNrId() as string;
   }
 
   private findVagas(filtro?: FiltroVaga) {
@@ -50,7 +55,7 @@ export class CandidaturaComponent implements OnInit {
     this.apiService.buscarVagas(filtro).subscribe({
       next: (response) => {
         this.vagas = response.data.items;
-        this.findVagasDoCandidato()
+        this.findVagasDoCandidato();
       },
       error: (err) => {
         this.toast.error("Ocorreu algum erro ao buscar perfis")

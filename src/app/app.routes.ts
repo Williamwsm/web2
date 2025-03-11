@@ -29,7 +29,7 @@ export const routes: Routes = [
     canActivate: [authEmpresaGuard],
   },
   { path: 'edit-perfil', component: EditPerfilComponent },
-  { path: 'curriculo', component: FormCurriculoComponent },
+  { path: 'curriculo/:curNrId', component: FormCurriculoComponent },
   { path: 'emp-perfil', component: EmpPerfilComponent },
   { path: 'cand-perfil', component: CandPerfilComponent },
 
