@@ -6,6 +6,6 @@ export interface Candidato {
   canTxCep:string
   canTxLogradouro ?:string
   canTxEmail:string
-  canTxSenha:string,
+  canTxSenha?:string,
   canTxCelular:string
 }

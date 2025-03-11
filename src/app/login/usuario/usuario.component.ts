@@ -36,7 +36,7 @@ export class UsuarioComponent {
 
   submit() {
 
-    this.apiService.cadasTrarCandidato(this.candidato)
+    this.apiService.cadastrarCandidato(this.candidato)
       .subscribe({
         next: (value) => {
           this.toastService.success("Candidato cadastrado com sucesso")

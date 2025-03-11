@@ -3,10 +3,10 @@ export interface Empresa {
   empTxCnpj:string
   empTxRazaoSocial:string
   empTxTelefone:string
-  empTxNumero:string
+  empTxNumero?:string
   empTxRua ?:string
   empTxCep:string
   empTxLogradouro ?:string
   empTxEmail:string
-  empTxSenha:string
+  empTxSenha?:string
 }

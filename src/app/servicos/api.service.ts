@@ -23,12 +23,18 @@ export class ApiService {
     return this.http.post<ResponseApi<string>>(`${this.urlApi}/usuarios/login`, form );
   }
 
-  cadasTrarCandidato(form: Candidato) : Observable<void> {
+  cadastrarCandidato(form: Candidato) : Observable<void> {
     return this.http.post<void>(`${this.urlApi}/candidatos/cadastrar`, form );
   }
+  atualizarCandidato(canNrId: number, form: Candidato) : Observable<void> {
+    return this.http.post<void>(`${this.urlApi}/candidatos/atualizar`, form );
+  }
 
-  empresa(form: Empresa ) {
+  cadastrarEmpresa(form: Empresa ) {
     return this.http.post(`${this.urlApi}/empresas/cadastrar`, form );
+  }
+  atualizarEmpresa(empNrId: number, form: Empresa) {
+    return this.http.post(`${this.urlApi}/empresas/atualizar`, form );
   }
 
   vaga(form: Vaga ) {
